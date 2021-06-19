@@ -49,26 +49,32 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildBody(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: Theme.verticalPadding),
-      child: Column(
-        children: [
-          Expanded(
-              child: ListView.builder(
-                  itemCount: 15,
-                  itemBuilder: (context, position) => InkWell(
-                        onTap: () => _openDetailsPage(context),
-                        child: SingleListItem(
-                          key: Key(position.toString()),
-                        ),
-                      ))),
-          const BottomBlock()
-        ],
+    return Container(
+      decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/images/abstract-background.jpg'),
+              fit: BoxFit.cover)),
+      child: Padding(
+        padding: const EdgeInsets.only(top: Theme.verticalPadding),
+        child: Column(
+          children: [
+            Expanded(
+                child: ListView.builder(
+                    itemCount: 15,
+                    itemBuilder: (context, position) => InkWell(
+                          onTap: () => _openDetailsPage(context),
+                          child: SingleListItem(
+                            key: Key(position.toString()),
+                          ),
+                        ))),
+            const BottomBlock()
+          ],
+        ),
       ),
     );
   }
 
   void _openDetailsPage(BuildContext context) {
-    Navigator.of(context)?.pushNamed(RoutesGenerator.detailsPage);
+    Navigator.of(context).pushNamed(RoutesGenerator.detailsPage);
   }
 }

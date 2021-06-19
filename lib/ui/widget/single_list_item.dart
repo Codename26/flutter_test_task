@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test_task/ui/common/theme.dart' as Theme;
 
 class SingleListItem extends StatelessWidget {
+  // final RandomUser user;
   SingleListItem({required Key key}) : super(key: key);
 
   @override
