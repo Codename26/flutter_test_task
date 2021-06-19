@@ -40,3 +40,4 @@ final white = Colors.white;
 //Size
 
 const photoSize = 150.0;
+const smallPhotoSize = 80.0;

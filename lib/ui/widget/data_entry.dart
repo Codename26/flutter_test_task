@@ -16,7 +16,13 @@ class DataEntry extends StatelessWidget {
           SizedBox(
             width: 16,
           ),
-          Text(dataEntryValue),
+          Expanded(
+            child: Text(
+              dataEntryValue,
+              softWrap: true,
+              overflow: TextOverflow.clip,
+            ),
+          ),
         ],
       ),
     );
