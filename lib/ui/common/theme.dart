@@ -28,7 +28,15 @@ const allPadding = 8.0;
 
 //BorderRadius
 const borderRadius = 8.0;
+const borderRadius16 = 16.0;
 
 //Color
 final bottomGrey = Colors.grey.shade200;
 final shadowGrey = Colors.grey.shade400;
+final gradientLightBlue = Colors.lightBlue.shade200;
+final gradientDarkBlue = Colors.blue.shade900;
+final white = Colors.white;
+
+//Size
+
+const photoSize = 150.0;
