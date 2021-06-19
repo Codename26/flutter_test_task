@@ -2,31 +2,30 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test_task/ui/common/constants.dart';
 import 'package:flutter_test_task/ui/common/theme.dart' as Theme;
+import 'package:flutter_test_task/ui/routes.dart';
+import 'package:flutter_test_task/ui/widget/bottom_block.dart';
 import 'package:flutter_test_task/ui/widget/single_list_item.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomePage extends StatefulWidget {
+  const HomePage();
+
   @override
-  _HomeScreenState createState() {
-    return _HomeScreenState();
+  _HomePageState createState() {
+    return _HomePageState();
   }
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
   }
 
   @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppBar(),
-      body: _buildBody(),
+      body: _buildBody(context),
     );
   }
 
@@ -49,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildBody() {
+  Widget _buildBody(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: Theme.verticalPadding),
       child: Column(
@@ -57,37 +56,19 @@ class _HomeScreenState extends State<HomeScreen> {
           Expanded(
               child: ListView.builder(
                   itemCount: 15,
-                  itemBuilder: (context, position) => SingleListItem(
-                        key: Key(position.toString()),
+                  itemBuilder: (context, position) => InkWell(
+                        onTap: () => _openDetailsPage(context),
+                        child: SingleListItem(
+                          key: Key(position.toString()),
+                        ),
                       ))),
-          _buildBottomBlock()
+          const BottomBlock()
         ],
       ),
     );
   }
 
-  Widget _buildBottomBlock() {
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(blurRadius: 5.0, spreadRadius: 1.0, color: Theme.shadowGrey)
-        ],
-        color: Theme.bottomGrey,
-      ),
-      child: Column(
-        children: [
-          Padding(
-            padding:
-                const EdgeInsets.symmetric(vertical: Theme.verticalPadding),
-            child: Text(Constants.BOTTOM_TEXT),
-          ),
-          ElevatedButton(onPressed: () {}, child: Text(Constants.BUTTON_TEXT)),
-          SizedBox(
-            height: Theme.bottomScreenPadding,
-          )
-        ],
-      ),
-    );
+  void _openDetailsPage(BuildContext context) {
+    Navigator.of(context)?.pushNamed(RoutesGenerator.detailsPage);
   }
 }
